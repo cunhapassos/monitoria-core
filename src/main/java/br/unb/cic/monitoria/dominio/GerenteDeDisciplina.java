@@ -17,7 +17,11 @@ public class GerenteDeDisciplina {
 	private static final String CONSULTA_POR_CODIGO = 
 			"SELECT d from Disciplina d where d.codigo = :pCodigo";
 	
-	
+	/**
+	 * Pesquisa uma disciplina po codigo. 
+	 * @param codigo codigo da disciplina
+	 * @return disciplina que satisfaz o criterio de busca.
+	 */
 	public Disciplina pesquisaPorCodigo(Integer codigo) {
 		EntityManager em = HibernateUtil.instance().em();
 		

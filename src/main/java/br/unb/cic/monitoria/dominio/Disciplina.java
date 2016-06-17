@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +23,14 @@ public class Disciplina {
 	
 	@Column(name="NM_DISCIPLINA")
 	private String titulo;
+	
+	@Column(name="IN_TIPO")
+	private String tipo; 
 
+	@ManyToOne
+	@JoinColumn(name="CD_DEPARTAMENTO")
+	private Departamento departamento;
+	
 	public Disciplina() {}
 	
 	public Disciplina(Integer codigo, String titulo) {
@@ -51,6 +60,23 @@ public class Disciplina {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
 	
 	
 }

@@ -3,7 +3,8 @@ package br.unb.cic.spark;
 import spark.Route;
 
 /**
- * Classe abstrata que representacao uma Capacidade de um micro-servico, 
+ * Classe abstrata que representacao uma 
+ * Capacidade de um micro-servico, 
  * usando o framework Spark. 
  * 
  * @author rbonifacio

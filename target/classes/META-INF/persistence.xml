@@ -5,7 +5,12 @@
 	version="2.0">
 	<persistence-unit name="derby">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>br.cic.unb.monitoria.dominio.Aluno</class>
+		<class>br.unb.cic.monitoria.dominio.Aluno</class>
+		<class>br.unb.cic.monitoria.dominio.Oferta</class>
+		<class>br.unb.cic.monitoria.dominio.Professor</class>
+		<class>br.unb.cic.monitoria.dominio.Disciplina</class>
+		<class>br.unb.cic.monitoria.dominio.Departamento</class>
+		<class>br.unb.cic.monitoria.dominio.Monitoria</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
@@ -21,7 +26,12 @@
 
 	<persistence-unit name="hsqldb">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>br.cic.unb.monitoria.dominio.Aluno</class>
+		<class>br.unb.cic.monitoria.dominio.Aluno</class>
+		<class>br.unb.cic.monitoria.dominio.Oferta</class>
+		<class>br.unb.cic.monitoria.dominio.Professor</class>
+		<class>br.unb.cic.monitoria.dominio.Disciplina</class>
+		<class>br.unb.cic.monitoria.dominio.Departamento</class>
+		<class>br.unb.cic.monitoria.dominio.Monitoria</class>
 
 		<properties>
 			<property name="hibernate.archive.autodetection" value="class" />

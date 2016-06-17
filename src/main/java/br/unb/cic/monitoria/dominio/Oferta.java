@@ -31,6 +31,9 @@ public class Oferta {
 	@Column(name="DS_TURMA")
 	private String turma;
 	
+	@Column(name="NR_ALUNOS")
+	private int quantidadeDeAlunos;
+	
 	public Oferta() { }
 
 	public Integer getId() {
@@ -72,6 +75,13 @@ public class Oferta {
 	public void setTurma(String turma) {
 		this.turma = turma;
 	}
-	
+
+	public int getQuantidadeDeAlunos() {
+		return quantidadeDeAlunos;
+	}
+
+	public void setQuantidadeDeAlunos(int quantidadeDeAlunos) {
+		this.quantidadeDeAlunos = quantidadeDeAlunos;
+	}
 	
 }

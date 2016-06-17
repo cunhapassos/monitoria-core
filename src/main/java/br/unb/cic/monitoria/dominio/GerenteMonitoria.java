@@ -4,17 +4,14 @@ import javax.persistence.EntityManager;
 
 import br.unb.cic.monitoria.util.HibernateUtil;
 
-
+/**
+ * Classe que representa um repositorio para os 
+ * pedidos de monitoria. 
+ * 
+ * @author rbonifacio
+ *
+ */
 public class GerenteMonitoria {
 
-	public Integer solicitarPedido(Integer idAluno, Integer idTurma, int opcao) {
-		EntityManager em = HibernateUtil.instance().em();
-		
-		Aluno aluno   = em.find(Aluno.class, idAluno);
-		//Oferta oferta = em.find(Oferta.class, idTurma)
-		
-		
-		//deve retornar o ID do pedido de monitoria.
-		return 123;
-	}
+	
 }

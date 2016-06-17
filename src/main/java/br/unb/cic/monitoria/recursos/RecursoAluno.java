@@ -10,6 +10,12 @@ import br.unb.cic.spark.JSONUtil;
 import br.unb.cic.spark.Metodo;
 import br.unb.cic.spark.Recurso;
 
+/**
+ * Classe que representa um recurso REST com 
+ * capacidades para lidar com o conceito Aluno. 
+ * 
+ * @author rbonifacio
+ */
 public class RecursoAluno extends Recurso {
 
 	@Override
@@ -27,11 +33,11 @@ public class RecursoAluno extends Recurso {
 					Aluno aluno = repositorio.autenticar(matricula, senha);
 						
 					if(aluno == null) {
-						resp.status(CodigoDeRetorno.NAO_AUTORIZADO.codigo);
+						resp.status(CodigoDeRetorno.NAO_AUTORIZADO);
 						return "Unauthorized";
 					}
 					else {
-						resp.status(CodigoDeRetorno.SUCESSO.codigo);
+						resp.status(CodigoDeRetorno.SUCESSO);
 						resp.type("application/json");
 						return JSONUtil.dataToJson(new AlunoVO(aluno.getId(), aluno.getNome(), aluno.getIra()));
 					}
@@ -43,6 +49,10 @@ public class RecursoAluno extends Recurso {
 		});	
 	}
 	
+	/*
+	 * Classe que representa um VO para o conceito 
+	 * aluno. 
+	 */
 	static class AlunoVO {
 		private Integer id;
 		private String nome;

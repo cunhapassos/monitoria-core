@@ -6,6 +6,12 @@ import java.io.StringWriter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+/**
+ * Classe utilitaria para mapear objetos 
+ * Java para o formato JSON. 
+ * 
+ * @author rbonifacio
+ */
 public class JSONUtil {
 	 public static String dataToJson(Object data) {
 	        try {
@@ -15,6 +21,7 @@ public class JSONUtil {
 	            mapper.writeValue(sw, data);
 	            return sw.toString();
 	        } catch (IOException e){
+	        	e.printStackTrace();
 	            throw new RuntimeException("IOException from a StringWriter?");
 	        }
 	    }

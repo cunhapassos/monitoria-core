@@ -10,7 +10,6 @@ import spark.Spark;
 /**
  * Classe que representa o container de 
  * micro-servicos baseado no SparkFramework, 
- * 
  * @author rbonifacio
  */
 public class ServidorSpark extends Spark {
@@ -31,17 +30,13 @@ public class ServidorSpark extends Spark {
 				else if(c.getMetodo() == Metodo.POST) {
 					post(c.getPath(),c);
 				}
+				else if(c.getMetodo() == Metodo.PUT) {
+					put(c.getPath(),c);
+				}
+				else if(c.getMetodo() == Metodo.DELETE) {
+					delete(c.getPath(),c);
+				}
 			}
 		}
-//		Oferta o = new Oferta();
-//		o.definirCapacidades();
-//		Iterator<Capacidade> it = GerenciadorDeRotas.instance().iterator();
-//		
-//		while(it.hasNext()) {
-//			Capacidade c = it.next();
-//			if(c.getMetodo() == Metodo.GET) {
-//				get(c.getPath(), c);
-//			}
-//		}
 	}
 }

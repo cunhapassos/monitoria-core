@@ -33,7 +33,7 @@ public class RecursoSolicitacaoMonitoria extends Recurso {
 					
 					GerenteMonitoria repositorio = new GerenteMonitoria();
 					
-					return repositorio.solicitarPedido(sm.idAluno, sm.idTurma, sm.opcao);
+					return null; //repositorio.solicitarPedido(sm.idAluno, sm.idTurma, sm.opcao);
 				} catch (Exception e) {
 					e.printStackTrace();
 					resp.status(500);
