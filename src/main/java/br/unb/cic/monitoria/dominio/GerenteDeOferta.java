@@ -18,7 +18,7 @@ public class GerenteDeOferta {
 	private static final String CONSULTA_POR_SEMESTRE_DISCIPLINA = 
 			"SELECT o FROM Oferta o "
 			+ "WHERE o.semestre = :pmtSemestre and "
-			+ "o.disciplina.id = :pmtDisciplina";
+			+ "o.disciplina.departamento.id = :pmtDepartamento";
 
 	/**
 	 * Lista a oferta de uma determinada disciplina em um semestre especifico.
@@ -27,12 +27,13 @@ public class GerenteDeOferta {
 	 * @param semestre numero do semestre
 	 * @return turmas ofertadas para a disciplina em um semestre especifico.
 	 */
-	public List<Oferta> listarOferta(Integer idDisciplina, Integer semestre) {
+	public List<Oferta> listarOferta(Integer idDepartamento, Integer semestre) {
 		System.out.println("semestre: " + semestre);
 		EntityManager em = HibernateUtil.instance().em();
 		return em.createQuery(CONSULTA_POR_SEMESTRE_DISCIPLINA)
 				.setParameter("pmtSemestre", semestre)
-				.setParameter("pmtDisciplina", idDisciplina).getResultList();
+				.setParameter("pmtDepartamento", idDepartamento)
+				.getResultList();
 	}
 
 }

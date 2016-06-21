@@ -18,13 +18,13 @@ public class RecursoOferta extends Recurso {
 		capacidades.add(new Capacidade(Metodo.GET, "/oferta") {
 			public Object handle(Request req, Response resp) throws Exception {
 				try {
-					Integer idDisciplina = Integer.parseInt(req.queryParams("disciplina"));
+					Integer idDepartamento = Integer.parseInt(req.queryParams("departamento"));
 				
 					Integer semestre = Integer.parseInt(req.queryParams(("semestre")));
 					
 					GerenteDeOferta repositorio  = new GerenteDeOferta();
 					
-					List<Oferta> listaDeOferta = repositorio.listarOferta(idDisciplina, semestre);
+					List<Oferta> listaDeOferta = repositorio.listarOferta(idDepartamento, semestre);
 					OfertaVO responseData[] = new OfertaVO[listaDeOferta.size()];
 					int i = 0;
 					for (Oferta oferta : listaDeOferta) {
