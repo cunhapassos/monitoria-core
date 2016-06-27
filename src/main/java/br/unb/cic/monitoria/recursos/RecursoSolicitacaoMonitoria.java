@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import spark.Request;
 import spark.Response;
 import br.unb.cic.monitoria.dominio.GerenteMonitoria;
+import br.unb.cic.monitoria.dominio.MonitoriaVO;
 import br.unb.cic.spark.Capacidade;
 import br.unb.cic.spark.Metodo;
 import br.unb.cic.spark.Recurso;
@@ -26,14 +27,16 @@ public class RecursoSolicitacaoMonitoria extends Recurso {
 					ObjectMapper om = new ObjectMapper();
 					
 					SolicitacaoMonitoria sm = om.readValue(req.body(), SolicitacaoMonitoria.class);
-					
-					System.out.println(sm);
-					
-					resp.status(200);
+
+					MonitoriaVO vo = new MonitoriaVO(sm.idOferta, sm.getIdAluno(), sm.getTipo());
 					
 					GerenteMonitoria repositorio = new GerenteMonitoria();
 					
-					return null; //repositorio.solicitarPedido(sm.idAluno, sm.idTurma, sm.opcao);
+					Integer id = repositorio.registrarPedidoMonitoria(vo);
+					
+					resp.status(200);
+					
+					return id; //repositorio.solicitarPedido(sm.idAluno, sm.idTurma, sm.opcao);
 				} catch (Exception e) {
 					e.printStackTrace();
 					resp.status(500);
@@ -44,40 +47,49 @@ public class RecursoSolicitacaoMonitoria extends Recurso {
 
 	}
 
+	/*
+	 * classe auxiliar que permite extrair informacoes de 
+	 * a requisicao REST para registrar interesse em 
+	 * monitoria utilizando o metodo POST
+	 */
 	static class SolicitacaoMonitoria {
 		int idAluno;
-		int idTurma;
-		int opcao;
-		
+		int idOferta;
+		String tipo;
 		
 		public SolicitacaoMonitoria() {
 			
 		}
-		public SolicitacaoMonitoria(int idAluno, int idTurma, int opcao) {
+		
+		public SolicitacaoMonitoria(int idAluno, int idOferta, String tipo) {
 			this.idAluno = idAluno;
-			this.idTurma = idTurma;
-			this.opcao = opcao;
+			this.idOferta = idOferta;
+			this.tipo = tipo;
 		}
+		
 		public int getIdAluno() {
 			return idAluno;
 		}
+		
 		public void setIdAluno(int idAluno) {
 			this.idAluno = idAluno;
 		}
-		public int getIdTurma() {
-			return idTurma;
-		}
-		public void setIdTurma(int idTurma) {
-			this.idTurma = idTurma;
-		}
-		public int getOpcao() {
-			return opcao;
-		}
-		public void setOpcao(int opcao) {
-			this.opcao = opcao;
-		}
-
 		
+		public int getIdOferta() {
+			return idOferta;
+		}
+		
+		public void setIdOferta(int idOferta) {
+			this.idOferta = idOferta;
+		}
+		
+		public String getTipo() {
+			return tipo;
+		}
+		
+		public void setTipo(String tipo) {
+			this.tipo = tipo;
+		}
 	}
 
 }

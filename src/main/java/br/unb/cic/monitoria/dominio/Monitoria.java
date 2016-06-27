@@ -1,79 +1,97 @@
 package br.unb.cic.monitoria.dominio;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Monitoria")
 public class Monitoria {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "CD_MONITORIA")
+	private Integer id;
 	
-	private String id;
-	private String matricula;
-	private String codDisciplina;
-	private String codTurma;
-	private String status;
-	private String dataSolicitacao;
-	private String prioridade;
-	private String opcao;
+	@ManyToOne
+	@JoinColumn(name="CD_ALUNO")
+	private Aluno aluno;
 	
+	@ManyToOne
+	@JoinColumn(name="CD_OFERTA")
+	private Oferta oferta;
 	
+	@Column(name="NR_RANKING")
+	private Integer ranking;
 	
-	public Monitoria(String id, String matricula, String codDisciplina,
-			String codTurma, String status, String dataSolicitacao,
-			String prioridade, String opcao) {
+	@Column(name="TP_MONITORIA")
+	private String tipo;     //V - Voluntario, A - Ambos , R - Remunerado
+	
+	@Column(name="ST_MONITORIA")
+	private String status;   //AB- Aceito com Bolsa, AV - Aceito Voluntario , ID - Indeferido , PV - Pendente
+	
+	public Monitoria() {}
+
+	public Monitoria(Integer id, Aluno aluno, Oferta oferta, Integer ranking,
+			String tipo, String status) {
 		this.id = id;
-		this.matricula = matricula;
-		this.codDisciplina = codDisciplina;
-		this.codTurma = codTurma;
+		this.aluno = aluno;
+		this.oferta = oferta;
+		this.ranking = ranking;
+		this.tipo = tipo;
 		this.status = status;
-		this.dataSolicitacao = dataSolicitacao;
-		this.prioridade = prioridade;
-		this.opcao = opcao;
 	}
-	public String getOpcao() {
-		return opcao;
-	}
-	public void setOpcao(String opcao) {
-		this.opcao = opcao;
-	}
-	public String getId() {
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(String id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getMatricula() {
-		return matricula;
+
+	public Aluno getAluno() {
+		return aluno;
 	}
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
-	public String getCodDisciplina() {
-		return codDisciplina;
+
+	public Oferta getOferta() {
+		return oferta;
 	}
-	public void setCodDisciplina(String codDisciplina) {
-		this.codDisciplina = codDisciplina;
+
+	public void setOferta(Oferta oferta) {
+		this.oferta = oferta;
 	}
-	public String getCodTurma() {
-		return codTurma;
+
+	public Integer getRanking() {
+		return ranking;
 	}
-	public void setCodTurma(String codTurma) {
-		this.codTurma = codTurma;
+
+	public void setRanking(Integer ranking) {
+		this.ranking = ranking;
 	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getDataSolicitacao() {
-		return dataSolicitacao;
-	}
-	public void setDataSolicitacao(String dataSolicitacao) {
-		this.dataSolicitacao = dataSolicitacao;
-	}
-	public String getPrioridade() {
-		return prioridade;
-	}
-	public void setPrioridade(String prioridade) {
-		this.prioridade = prioridade;
-	} 
-	
-	
-
 }
