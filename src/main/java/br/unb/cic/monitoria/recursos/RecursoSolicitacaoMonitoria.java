@@ -38,8 +38,7 @@ public class RecursoSolicitacaoMonitoria extends Recurso {
 					
 					return id; //repositorio.solicitarPedido(sm.idAluno, sm.idTurma, sm.opcao);
 				} catch (Exception e) {
-					e.printStackTrace();
-					resp.status(500);
+					resp.status(400);
 					return e.getMessage();
 				}
 			}

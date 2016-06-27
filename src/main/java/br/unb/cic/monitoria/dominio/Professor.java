@@ -16,7 +16,7 @@ public class Professor {
 	private Integer id;
 	
 	@Column(name="NR_MATRICULA")
-	private Integer matricula;
+	private String matricula;
 	
 	@Column(name="NM_PROFESSOR")
 	private String nome;
@@ -26,7 +26,7 @@ public class Professor {
 
 	public Professor() { }
 	
-	public Professor(Integer matricula, String nome, String senha) {
+	public Professor(String matricula, String nome, String senha) {
 		this.matricula = matricula;
 		this.nome = nome;
 		this.senha = senha;
@@ -40,11 +40,11 @@ public class Professor {
 		this.id = id;
 	}
 
-	public Integer getMatricula() {
+	public String getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(Integer matricula) {
+	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
 

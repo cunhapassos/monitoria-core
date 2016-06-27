@@ -59,10 +59,10 @@ public class RecursoPopulaDB extends Recurso {
 				manager.getTransaction().begin();
 				manager.createQuery("delete from Professor").executeUpdate();
 				
-				Professor p1 = new Professor(123, "Professor 01", "123");
-				Professor p2 = new Professor(456, "Professor 02", "456");
-				Professor p3 = new Professor(789, "Professor 03", "789");
-				Professor p4 = new Professor(987, "Professor 04", "987");
+				Professor p1 = new Professor("123", "Professor 01", "123");
+				Professor p2 = new Professor("456", "Professor 02", "456");
+				Professor p3 = new Professor("789", "Professor 03", "789");
+				Professor p4 = new Professor("987", "Professor 04", "987");
 				
 				manager.persist(p1);
 				manager.persist(p2);
